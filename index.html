@@ -9,7 +9,7 @@
 async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,200]);
     var y = d3.scaleLog().domain([10,150]).range([200,0])
-    const data = await d3.csv("https://github.com/Eurus67/cs416/blob/main/cars2017.csv");
+    const data = await d3.csv("./cars2017.csv");
     console.log(data);
     svg.append("g")
     .attr("transform","translate(50,50)")
