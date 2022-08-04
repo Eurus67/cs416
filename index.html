@@ -43,18 +43,30 @@ async function init() {
       .append("circle")
           .attr("cx", function(d) {return x(d.AverageCityMPG)})
           .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)*2})
+          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)*2});
+    //Annotation
+    d3.select('svg').append("g")
+        .attr("transform","translate(50,50)")
+        .selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+          .attr("x", function(d) {return x(d.AverageCityMPG)})
+          .attr("y", function(d) {return y(d.AverageHighwayMPG)})
+          .text(function(d) {return d})
           .on("mouseover", function(d){
-        	  d3.selectAll('text').data(d).enter().append("text")
-                .attr("x", function(t) {return x(t.AverageCityMPG)}).attr("y", function(d) {return y(d.AverageHighwayMPG)})
-                .text(function(d){return d});
+        	  d3.selectAll('text')
+            	   .filter(function(t){return (t == d)})
+                   .transition()
+                   .style("opacity", 1)
           })
             .on("mouseout", function(d){
-               d3.selectAll('circle')
-                .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
+               d3.selectAll('text')
+                .filter(function(t){return (t == d)})
                 .transition()
-                .style("opacity", 1)
+                .style("opacity", 0.01)
           });
+        
     
     //legend
     d3.select('svg').append("g")
