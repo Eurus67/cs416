@@ -3,12 +3,11 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: rgb(223, 63, 61); stroke: rgb(160, 0, 0);} </style>
 <body onload='init()'>
+<a href="index.html"><button>Slide 1</button></a>
+<a href="html/second.html"><button>Slide 2</button></a>
+<a href="html/third.html"><button>Slide 3</button></a>
 <svg width=900 height=900>
 </svg>
-<a href="html/second.html"><button>Slide 2</button></a>
-<button onclick="location.href = 'index.html';" id="slide 1" class="float-left submit-button" >Slide 1</button>
-<button onclick="location.href = 'html/second.html';" id="slide 2" class="float-left submit-button" >Slide 2</button>
-<button onclick="location.href = 'html/third.html';" id="slide 3" class="float-left submit-button" >Slide 3</button>
 <script>
 async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
