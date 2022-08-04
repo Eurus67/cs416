@@ -10,23 +10,38 @@
 <a href="../index.html"><button>Slide 1</button></a>
 <a href="./second.html"><button>Slide 2</button></a>
 <a href="./third.html"><button>Slide 3</button></a><br>
+<a href="./third.html"><button>Next</button></a><br>
 <svg width=900 height=900>
 </svg>
 <script>
 async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
     var y = d3.scaleLog().domain([10,150]).range([800,0]);
+    var c20b = d3.scale.category20b();
     const data = await d3.csv("../cars2017.csv");
     console.log(data);
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
-      .selectAll("circle")
+      .selectAll("circle").filter
       .data(data)
       .enter()
       .append("circle")
           .attr("cx", function(d) {return x(d.AverageCityMPG)})
           .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)+2});
+          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)*2})
+          .style("fill", function(d) { return c20b(d.EngineCylinders); })
+	      .on("mouseover", function(d){
+        	  d3.selectAll('circle')
+            	   .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
+                   .transition()
+                   .style("opacity", 0.01)
+          })
+            .on("mouseout", function(d){
+               d3.selectAll('circle')
+                .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
+                .transition()
+                .style("opacity", 1)
+          });
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
         .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));

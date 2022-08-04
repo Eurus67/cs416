@@ -10,6 +10,7 @@
     <a href="../index.html"><button>Slide 1</button></a>
     <a href="./second.html"><button>Slide 2</button></a>
     <a href="./third.html"><button>Slide 3</button></a><br>
+    <a href="../index.html"><button>Home</button></a>
 <svg width=900 height=900>
 </svg>
 <script>
@@ -26,7 +27,7 @@ async function init() {
       .append("circle")
           .attr("cx", function(d) {return x(d.AverageCityMPG)})
           .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)+2});
+          .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)*2});
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
         .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
