@@ -63,21 +63,21 @@ async function init() {
         .append("text")
           .attr("x", 0).attr("y",0).text("hover mouse over data points to see filtered data");
     d3.select("svg").append("g")
-        .attr("transform","translate(350,100)")
+        .attr("transform","translate(330,80)")
         .append("rect")
-          .attr("x", 0).attr("y",0).attr("width", 100).attr("height",20);
+          .attr("x", 0).attr("y",0).attr("width", 400).attr("height",20).attr("fill","none").attr('stroke', 'black');
     d3.select("svg").append("g")
-        .attr("transform","translate(750,750)")
+        .attr("transform","translate(550,550)")
         .append("text")
           .attr("x", 0).attr("y",0).text("cars clustered by fuel type");
     d3.select("svg").append("g")
-        .attr("transform","translate(750,770)")
+        .attr("transform","translate(550,570)")
         .append("text")
           .attr("x", 0).attr("y",0).text("cars using electricity are much more efficient than the others");
     d3.select("svg").append("g")
-        .attr("transform","translate(550,550)")
+        .attr("transform","translate(540,530)")
         .append("rect")
-          .attr("x", 0).attr("y",0).attr("width", 100).attr("height",40);
+          .attr("x", 0).attr("y",0).attr("width", 400).attr("height",40).attr("fill","none").attr('stroke', 'black');
         
     //xy axis
     d3.select('svg').append("g")
