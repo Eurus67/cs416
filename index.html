@@ -7,8 +7,8 @@
 </svg>
 <script>
 async function init() {
-    var x = d3.scaleLog().domain([10,150]).range([0,200]);
-    var y = d3.scaleLog().domain([10,150]).range([200,0]);
+    var x = d3.scaleLog().domain([10,150]).range([0,800]);
+    var y = d3.scaleLog().domain([10,150]).range([800,0]);
     const data = await d3.csv("./cars2017.csv");
     console.log(data);
     d3.select('svg').append("g")
