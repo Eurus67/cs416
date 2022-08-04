@@ -31,6 +31,8 @@ async function init() {
     var engine = [0,2,3,4,6,8,10,12];
     var color = d3.scaleOrdinal().domain(engine).range(d3.schemeSet3);
     console.log(data);
+
+    // scatterplot
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
       .selectAll("circle")
@@ -53,6 +55,8 @@ async function init() {
                 .transition()
                 .style("opacity", 1)
           });
+        
+    //xy axis
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
         .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
@@ -61,8 +65,9 @@ async function init() {
         .attr("transform","translate(50,850)")
         .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
 
+    //legend
     d3.select("svg").append("g")
-        .attr("transform", "translate(820, 47)")
+        .attr("transform", "translate(820, 40)")
         .selectAll("rect")
         .data(engine)
         .enter()

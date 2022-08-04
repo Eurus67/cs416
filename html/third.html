@@ -30,6 +30,8 @@ async function init() {
     var fueltype = ["Gasoline","Electricity","Diesel"];
     var color = d3.scaleOrdinal().domain(fueltype).range(d3.schemeSet3);
     console.log(data);
+
+    //scatterplot
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
       .selectAll("circle")
@@ -52,6 +54,8 @@ async function init() {
                 .transition()
                 .style("opacity", 1)
           });
+    
+    //xy axis
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
         .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
@@ -59,9 +63,10 @@ async function init() {
     d3.select('svg').append("g")
         .attr("transform","translate(50,850)")
         .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
-
+    
+    //legend
     d3.select("svg").append("g")
-        .attr("transform", "translate(820, 47)")
+        .attr("transform", "translate(820, 40)")
         .selectAll("rect")
         .data(fueltype)
         .enter()
