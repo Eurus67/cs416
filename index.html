@@ -1,7 +1,7 @@
 <!doctype html>
 <h1> CS416 Final Project - Fuel Consumption of Cars </h1>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: rgb(61, 223, 88); stroke: rgb(160, 0, 0);} </style>
+<style> circle {fill: rgb(223, 63, 61); stroke: rgb(160, 0, 0);} </style>
 <body onload='init()'>
 <svg width=900 height=900>
 </svg>
@@ -29,7 +29,8 @@ async function init() {
         .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
 }
 </script>
-<button onclick="location.href = 'html/first.html';" id="slide 1" class="float-left submit-button" >Slide 1</button>
+<button onclick="location.href = 'index.html';" id="slide 1" class="float-left submit-button" >Slide 1</button>
 <button onclick="location.href = 'html/second.html';" id="slide 2" class="float-left submit-button" >Slide 2</button>
 <button onclick="location.href = 'html/third.html';" id="slide 3" class="float-left submit-button" >Slide 3</button>
 </body>
+
