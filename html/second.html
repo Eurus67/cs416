@@ -28,8 +28,8 @@ async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
     var y = d3.scaleLog().domain([10,150]).range([800,0]);
     const data = await d3.csv("../cars2017.csv");
-    var fueltype = [0,2,3,4,6,8,10,12];
-    var color = d3.scaleOrdinal().domain(fueltype).range(d3.schemeSet3);
+    var engine = [0,2,3,4,6,8,10,12];
+    var color = d3.scaleOrdinal().domain(engine).range(d3.schemeSet3);
     console.log(data);
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
@@ -64,15 +64,15 @@ async function init() {
     d3.select("svg").append("g")
         .attr("transform", "translate(820, 50)")
         .selectAll("rect")
-        .data(fueltype)
+        .data(engine)
         .enter()
         .append("rect")
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
-            .attr("width", 30).attr("height", 40);
+            .attr("width", 30).attr("height", 20).attr("fill", function(d){return color(d)});
     d3.select("svg").append("g")
         .attr("transform", "translate(850, 50)")
         .selectAll("text")
-        .data(fueltype)
+        .data(engine)
         .enter()
         .append("text")
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
