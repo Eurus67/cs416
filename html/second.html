@@ -15,7 +15,7 @@
 <div>
 <body onload='init()'>
     <a href="../index.html"><button>Slide 1</button></a>
-    <div class="button" style="background-color:rgb(124, 124, 124);"> Slide 2 </div>
+    <a href="./second.html"><button>Slide 2</button></a>
     <a href="./third.html"><button>Slide 3</button></a>
     <a href="./third.html"><button>Next</button></a><br>
 </div>
@@ -57,17 +57,17 @@ async function init() {
     
     //Annotation
     d3.select("svg").append("g")
-        .attr("transform","translate(350,50)")
+        .attr("transform","translate(350,100)")
         .append("text")
-          .attr("x", 0).attr("y",0).text("hover mouse over data points to see filtered data");
+          .attr("x", 0).attr("y",0).text("hover mouse over \n data points \n to see filtered data");
     d3.select("svg").append("g")
         .attr("transform","translate(750,750)")
         .append("text")
-          .attr("x", 0).attr("y",0).text("cars clustered by number of engine cylinders");
+          .attr("x", 0).attr("y",0).text("cars clustered by \n number of engine cylinders");
     d3.select("svg").append("g")
         .attr("transform","translate(750,770)")
         .append("text")
-          .attr("x", 0).attr("y",0).text("cars with fewer engine cylinder are more efficient");
+          .attr("x", 0).attr("y",0).text("cars with fewer engine cylinder \n are more efficient");
     
     //xy axis
     d3.select('svg').append("g")
