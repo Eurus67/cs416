@@ -5,14 +5,23 @@
      of dollars on fuel costs over time and can often balance out a higher purchase price <br>
      if you keep the car long enough.</p><br>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: rgb(61, 210, 223); stroke: rgb(160, 0, 0);} </style>
+<style> circle {fill: rgb(61, 210, 223); stroke: rgb(104, 86, 86);} </style>
+<style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+</style>
+
+<div>
 <body onload='init()'>
     <a href="../index.html"><button>Slide 1</button></a>
     <a href="./second.html"><button>Slide 2</button></a>
-    <a href="./third.html"><button>Slide 3</button></a><br>
-    <a href="../index.html"><button>Home</button></a>
-<svg width=900 height=900>
-</svg>
+    <a href="./third.html"><button>Slide 3</button></a>
+    <a href="../index.html"><button>Home</button></a><br>
+</div>
+
+<div><svg width=900 height=900></svg></div>
+
 <script>
 async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
