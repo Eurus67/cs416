@@ -73,6 +73,10 @@ async function init() {
         .attr("transform","translate(350,100)")
         .append("text")
           .attr("x", 0).attr("y",0).text("hover mouse over \n data points \n to see detail");
+    d3.select("svg").append("g")
+        .attr("transform","translate(350,100)")
+        .append("rect")
+          .attr("x", 0).attr("y",0).attr("width", 100).attr("height",20);
         
     
     //xy axis

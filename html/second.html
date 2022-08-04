@@ -61,13 +61,21 @@ async function init() {
         .append("text")
           .attr("x", 0).attr("y",0).text("hover mouse over \n data points \n to see filtered data");
     d3.select("svg").append("g")
-        .attr("transform","translate(750,750)")
+        .attr("transform","translate(350,100)")
+        .append("rect")
+          .attr("x", 0).attr("y",0).attr("width", 100).attr("height",20);
+    d3.select("svg").append("g")
+        .attr("transform","translate(550,550)")
         .append("text")
           .attr("x", 0).attr("y",0).text("cars clustered by \n number of engine cylinders");
     d3.select("svg").append("g")
-        .attr("transform","translate(750,770)")
+        .attr("transform","translate(550,570)")
         .append("text")
           .attr("x", 0).attr("y",0).text("cars with fewer engine cylinder \n are more efficient");
+    d3.select("svg").append("g")
+        .attr("transform","translate(550,550)")
+        .append("rect")
+          .attr("x", 0).attr("y",0).attr("width", 100).attr("height",40);
     
     //xy axis
     d3.select('svg').append("g")
@@ -80,7 +88,7 @@ async function init() {
     
     //legend
     d3.select("svg").append("g")
-        .attr("transform", "translate(220, 40)")
+        .attr("transform", "translate(120, 40)")
         .selectAll("rect")
         .data(fueltype)
         .enter()
@@ -88,7 +96,7 @@ async function init() {
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
             .attr("width", 30).attr("height", 17).attr("fill", function(d){return color(d)});
     d3.select("svg").append("g")
-        .attr("transform", "translate(250, 50)")
+        .attr("transform", "translate(150, 50)")
         .selectAll("text")
         .data(fueltype)
         .enter()
