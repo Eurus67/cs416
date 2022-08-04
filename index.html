@@ -53,7 +53,9 @@ async function init() {
         .append("text")
           .attr("x", function(d) {return x(d.AverageCityMPG)})
           .attr("y", function(d) {return y(d.AverageHighwayMPG)})
-          .text(function(d) {return d})
+          .style("opacity", 0)
+          .style("size", 10)
+          .text(function(d) {return d.Make + '\n' + "City:" + d.AverageCityMPG + '\n' +  "Highway:" + d.AverageHighwayMPG})
           .on("mouseover", function(d){
         	  d3.selectAll('text')
             	   .filter(function(t){return (t == d)})
@@ -64,7 +66,7 @@ async function init() {
                d3.selectAll('text')
                 .filter(function(t){return (t == d)})
                 .transition()
-                .style("opacity", 0.01)
+                .style("opacity", 0)
           });
         
     
