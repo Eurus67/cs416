@@ -18,7 +18,7 @@ async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
     var y = d3.scaleLog().domain([10,150]).range([800,0]);
     const data = await d3.csv("../cars2017.csv");
-    var color = d3.scaleOrdinal().domain(data.EngineCylinders).range(d3.schemeSet3);
+    var color = d3.scaleOrdinal().domain([2,4,6,8,10,12,14]).range(d3.schemeSet3);
     console.log(data);
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
