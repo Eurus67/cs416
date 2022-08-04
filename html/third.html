@@ -59,7 +59,7 @@ async function init() {
 
     //Annotation
     d3.select("svg").append("g")
-        .attr("transform","translate(350,50)")
+        .attr("transform","translate(350,100)")
         .append("text")
           .attr("x", 0).attr("y",0).text("hover mouse over data points to see filtered data");
     d3.select("svg").append("g")
@@ -77,7 +77,7 @@ async function init() {
     d3.select("svg").append("g")
         .attr("transform","translate(540,530)")
         .append("rect")
-          .attr("x", 0).attr("y",0).attr("width", 400).attr("height",40).attr("fill","none").attr('stroke', 'black');
+          .attr("x", 0).attr("y",0).attr("width", 400).attr("height",45).attr("fill","none").attr('stroke', 'black');
         
     //xy axis
     d3.select('svg').append("g")
