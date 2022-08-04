@@ -68,9 +68,14 @@ async function init() {
                 .transition()
                 .style("opacity", 0)
           });
+
+    d3.select("svg").append("g")
+        .attr("transform","translate(350,50)")
+        .append("text")
+          .attr("x", 0).attr("y",0).text("hover mouse over data points to see detail");
         
     
-    //legend
+    //xy axis
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
         .call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));

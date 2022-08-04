@@ -55,6 +55,12 @@ async function init() {
                 .transition()
                 .style("opacity", 1)
           });
+
+    //Annotation
+    d3.select("svg").append("g")
+        .attr("transform","translate(350,50)")
+        .append("text")
+          .attr("x", 0).attr("y",0).text("hover mouse over data points to see filtered data");
         
     //xy axis
     d3.select('svg').append("g")
@@ -67,7 +73,7 @@ async function init() {
 
     //legend
     d3.select("svg").append("g")
-        .attr("transform", "translate(820, 40)")
+        .attr("transform", "translate(220, 40)")
         .selectAll("rect")
         .data(engine)
         .enter()
@@ -75,7 +81,7 @@ async function init() {
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
             .attr("width", 30).attr("height", 17).attr("fill", function(d){return color(d)});
     d3.select("svg").append("g")
-        .attr("transform", "translate(850, 50)")
+        .attr("transform", "translate(250, 50)")
         .selectAll("text")
         .data(engine)
         .enter()
