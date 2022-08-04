@@ -17,7 +17,6 @@
 async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
     var y = d3.scaleLog().domain([10,150]).range([800,0]);
-    var c20b = d3.scale.category20b();
     const data = await d3.csv("../cars2017.csv");
     console.log(data);
     d3.select('svg').append("g")
@@ -29,7 +28,7 @@ async function init() {
           .attr("cx", function(d) {return x(d.AverageCityMPG)})
           .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
           .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)*2})
-          .style("fill", function(d) { return c20b(d.EngineCylinders); })
+          .style("fill", function(d) { return rgb(Number.parseInt(d.EngineCylinders)*2,Number.parseInt(d.EngineCylinders)*4,Number.parseInt(d.EngineCylinders)*6); })
 	      .on("mouseover", function(d){
         	  d3.selectAll('circle')
             	   .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
