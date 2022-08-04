@@ -5,19 +5,21 @@
      of dollars on fuel costs over time and can often balance out a higher purchase price <br>
      if you keep the car long enough.</p><br>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: rgb(61, 210, 223); stroke: rgb(104, 86, 86);} </style>
+<style> circle {fill: rgb(61, 223, 88); stroke: rgb(71, 62, 62);} </style>
 <style>
     h1 {text-align: center;}
     p {text-align: center;}
     div {text-align: center;}
 </style>
 
-<div>
 <body onload='init()'>
-    <a href="../index.html"><button>Slide 1</button></a>
-    <a href="./second.html"><button>Slide 2</button></a>
-    <a href="./third.html"><button>Slide 3</button></a>
-    <a href="../index.html"><button>Home</button></a><br>
+
+<div>
+<a href="../index.html"><button>Slide 1</button></a>
+<a href="./second.html"><button>Slide 2</button></a>
+<div class="button" style="background-color:rgb(124, 124, 124);"> Slide 3 </div>
+<a href="../index.html"><button>Home</button></a><br>
+
 </div>
 
 <div><svg width=900 height=900></svg></div>
@@ -27,11 +29,11 @@ async function init() {
     var x = d3.scaleLog().domain([10,150]).range([0,800]);
     var y = d3.scaleLog().domain([10,150]).range([800,0]);
     const data = await d3.csv("../cars2017.csv");
-    var fueltype = ["Gasoline","Electricity","Diesel"];
-    var color = d3.scaleOrdinal().domain(fueltype).range(d3.schemeSet3);
+    var engine = [0,2,3,4,6,8,10,12];
+    var color = d3.scaleOrdinal().domain(engine).range(d3.schemeSet3);
     console.log(data);
 
-    //scatterplot
+    // scatterplot
     d3.select('svg').append("g")
       .attr("transform","translate(50,50)")
       .selectAll("circle")
@@ -41,26 +43,34 @@ async function init() {
           .attr("cx", function(d) {return x(d.AverageCityMPG)})
           .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
           .attr("r", function(d) {return Number.parseInt(d.EngineCylinders)+4})
-          .style("fill", function(d){return color(d.Fuel)})
-          .on("mouseover", function(d){
+          .style("fill", function(d) { return color(d.EngineCylinders); })
+	      .on("mouseover", function(d){
         	  d3.selectAll('circle')
-            	   .filter(function(c){return (c.Fuel != d.Fuel)})
+            	   .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
                    .transition()
                    .style("opacity", 0.01)
           })
             .on("mouseout", function(d){
                d3.selectAll('circle')
-                .filter(function(c){return (c.Fuel != d.Fuel)})
+                .filter(function(c){return (c.EngineCylinders != d.EngineCylinders)})
                 .transition()
                 .style("opacity", 1)
           });
-    
+
     //Annotation
     d3.select("svg").append("g")
         .attr("transform","translate(350,50)")
         .append("text")
           .attr("x", 0).attr("y",0).text("hover mouse over data points to see filtered data");
-    
+    d3.select("svg").append("g")
+        .attr("transform","translate(750,750)")
+        .append("text")
+          .attr("x", 0).attr("y",0).text("cars clustered by fuel type");
+    d3.select("svg").append("g")
+        .attr("transform","translate(750,770)")
+        .append("text")
+          .attr("x", 0).attr("y",0).text("cars using electricity are much more efficient than the others");
+        
     //xy axis
     d3.select('svg').append("g")
         .attr("transform","translate(50,50)")
@@ -69,12 +79,12 @@ async function init() {
     d3.select('svg').append("g")
         .attr("transform","translate(50,850)")
         .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
-    
+
     //legend
     d3.select("svg").append("g")
         .attr("transform", "translate(220, 40)")
         .selectAll("rect")
-        .data(fueltype)
+        .data(engine)
         .enter()
         .append("rect")
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
@@ -82,11 +92,12 @@ async function init() {
     d3.select("svg").append("g")
         .attr("transform", "translate(250, 50)")
         .selectAll("text")
-        .data(fueltype)
+        .data(engine)
         .enter()
         .append("text")
             .attr("x", 0).attr("y", function(d,i){return 20*(i+1)})
             .text(function(d){return d});
+
 }
 </script>
 </body>
