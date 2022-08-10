@@ -3,7 +3,9 @@
 <p>Fuel-efficient cars emit less pollution over the same amount of distance traveled.<br>
     They also cost less to operate. Buying a more fuel-efficient car can save you thousands<br>
      of dollars on fuel costs over time and can often balance out a higher purchase price <br>
-     if you keep the car long enough.</p><br>
+     if you keep the car long enough. Fuel efficiency can be shown by gallons of fuel used <br>
+per mile of traveling (miles per gallon or mpg).  The plot shows city mpg vs. highway mpg<br>
+and is color coded by number of engine cylinders. </p><br>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> circle {fill: rgb(61, 223, 88); stroke: rgb(71, 62, 62);} </style>
 <style>
@@ -87,6 +89,14 @@ async function init() {
     d3.select('svg').append("g")
         .attr("transform","translate(50,850)")
         .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
+	
+    d3.select('svg').append('g')
+        .attr("transform", "translate(30,160)")
+        .append("text").attr("transform", "rotate(-90)").text("Average Highway MPG");
+ 
+    d3.select('svg').append('g')
+        .attr("transform", "translate(750,880)")
+        .append("text").text("Average City MPG");
 
     //legend
     d3.select("svg").append("g")
