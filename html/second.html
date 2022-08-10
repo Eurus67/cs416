@@ -65,15 +65,15 @@ async function init() {
         .append("rect")
           .attr("x", 0).attr("y",0).attr("width", 400).attr("height",25).attr("fill","none").attr('stroke', 'black');
     d3.select("svg").append("g")
-        .attr("transform","translate(550,550)")
+        .attr("transform","translate(450,550)")
         .append("text")
-          .attr("x", 0).attr("y",0).text("cars clustered by \n number of engine cylinders");
+          .attr("x", 0).attr("y",0).text("cars clustered by fuel type");
     d3.select("svg").append("g")
-        .attr("transform","translate(550,570)")
+        .attr("transform","translate(450,570)")
         .append("text")
-          .attr("x", 0).attr("y",0).text("cars with fewer engine cylinder \n are more efficient");
+          .attr("x", 0).attr("y",0).text("electricity is more efficient than diesel and gas");
     d3.select("svg").append("g")
-        .attr("transform","translate(540,530)")
+        .attr("transform","translate(440,530)")
         .append("rect")
           .attr("x", 0).attr("y",0).attr("width", 400).attr("height", 45).attr("fill","none").attr('stroke', 'black');
     
